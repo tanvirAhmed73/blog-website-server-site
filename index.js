@@ -102,6 +102,14 @@ async function run() {
       
     });
 
+    app.get("/", (req, res) => {
+      res.send("Blog server running");
+    });
+    
+    app.listen(port, () => {
+      console.log(`example app listening on port ${port}`);
+    });
+
     await client.db("admin").command({ ping: 1 });
     console.log(
       "Pinged your deployment. You successfully connected to MongoDB!"
@@ -113,10 +121,4 @@ async function run() {
 }
 run().catch(console.dir);
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
 
-app.listen(port, () => {
-  console.log(`example app listening on port ${port}`);
-});
